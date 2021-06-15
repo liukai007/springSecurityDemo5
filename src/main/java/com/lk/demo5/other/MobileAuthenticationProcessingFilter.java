@@ -1,6 +1,8 @@
 package com.lk.demo5.other;
 
 import com.alibaba.fastjson.JSON;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -18,6 +20,13 @@ import java.util.Map;
 
 @Component
 public class MobileAuthenticationProcessingFilter extends AbstractAuthenticationProcessingFilter {
+
+    @Autowired
+    @Override
+    public void setAuthenticationManager(AuthenticationManager authenticationManager) {
+        super.setAuthenticationManager(authenticationManager);
+    }
+
 
     public MobileAuthenticationProcessingFilter() {
         super(new AntPathRequestMatcher("/login", "POST"));
