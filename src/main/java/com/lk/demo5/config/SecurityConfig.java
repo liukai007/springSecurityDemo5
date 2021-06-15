@@ -40,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
         //将多个自定义认证器都注册
-        auth.authenticationProvider(mobileAuthenticationProvider);
+        auth.authenticationProvider(new MobileAuthenticationProvider());
 
     }
 
