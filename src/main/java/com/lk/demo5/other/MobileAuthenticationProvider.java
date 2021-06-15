@@ -14,6 +14,7 @@ public class MobileAuthenticationProvider implements AuthenticationProvider {
     @Autowired
     private MobileUserDetailsService mobileUserDetailsService;
 
+
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String mobileNumber = authentication.getName();

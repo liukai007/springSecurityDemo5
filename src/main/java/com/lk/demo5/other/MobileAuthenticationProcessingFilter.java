@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.Map;
 
 
-@Component
+//@Component
 public class MobileAuthenticationProcessingFilter extends AbstractAuthenticationProcessingFilter {
 
     @Autowired

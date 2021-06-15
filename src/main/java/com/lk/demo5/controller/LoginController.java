@@ -23,6 +23,6 @@ public class LoginController {
         System.out.println(linkedHashMap.get("mobileNumber"));
         System.out.println(linkedHashMap.get("code"));
 
-        return "success";
+        return "login";
     }
 }
