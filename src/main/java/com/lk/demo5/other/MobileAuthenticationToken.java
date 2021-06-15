@@ -9,8 +9,14 @@ public class MobileAuthenticationToken extends AbstractAuthenticationToken {
     private String mobileNumber;
     private String code;
 
-    public MobileAuthenticationToken( String mobileNumber, String code) {
+    public MobileAuthenticationToken(String mobileNumber, String code) {
         super(null);
+        this.mobileNumber = mobileNumber;
+        this.code = code;
+    }
+
+    public MobileAuthenticationToken(Collection<? extends GrantedAuthority> authorities, String mobileNumber, String code) {
+        super(authorities);
         this.mobileNumber = mobileNumber;
         this.code = code;
     }
@@ -21,11 +27,11 @@ public class MobileAuthenticationToken extends AbstractAuthenticationToken {
 
     @Override
     public Object getCredentials() {
-        return null;
+        return this.code;
     }
 
     @Override
     public Object getPrincipal() {
-        return null;
+        return this.mobileNumber;
     }
 }
