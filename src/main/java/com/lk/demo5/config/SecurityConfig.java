@@ -40,8 +40,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
         //将多个自定义认证器都注册
-        auth.authenticationProvider(new MobileAuthenticationProvider());
+        auth.authenticationProvider(mobileAuthenticationProvider());
 
+    }
+
+    @Bean
+    public MobileAuthenticationProvider mobileAuthenticationProvider() {
+        return new MobileAuthenticationProvider();
     }
 
     @Bean
@@ -66,7 +71,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //        web.ignoring().antMatchers(HttpMethod.POST,
 //                "/login");
 //    }
-
     @Bean
     @Override
     protected AuthenticationManager authenticationManager() throws Exception {
