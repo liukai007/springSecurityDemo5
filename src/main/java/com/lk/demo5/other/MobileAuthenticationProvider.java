@@ -18,6 +18,8 @@ public class MobileAuthenticationProvider implements AuthenticationProvider {
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String mobileNumber = authentication.getName();
         String code = (String) authentication.getCredentials();
+        System.out.println("MobileAuthenticationProvider   " + mobileNumber);
+        System.out.println("MobileAuthenticationProvider   " + code);
 
         MobileUser mobileUser = (MobileUser) mobileUserDetailsService.loadUserByUsername(mobileNumber);
 
