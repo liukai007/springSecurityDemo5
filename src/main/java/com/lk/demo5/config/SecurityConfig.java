@@ -12,7 +12,6 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.authentication.preauth.AbstractPreAuthenticatedProcessingFilter;
@@ -34,7 +33,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.addFilterBefore(mobileAuthenticationProcessingFilter(), AbstractPreAuthenticatedProcessingFilter.class);
         http.authorizeRequests()
-                .antMatchers(HttpMethod.POST,"/login").permitAll()
+                .antMatchers(HttpMethod.POST, "/loginceshi").permitAll()
+                .antMatchers(HttpMethod.GET,"/failure").permitAll()
                 .anyRequest().authenticated()
                 .and().csrf().disable();
 
@@ -66,8 +66,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      * 忽略拦截url或静态资源文件夹
+     * <p>
+     * //     * @param web
      *
-     * @param web
      * @throws Exception
      */
 //    @Override

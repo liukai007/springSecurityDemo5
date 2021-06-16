@@ -13,7 +13,7 @@ import java.util.LinkedHashMap;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
-@RequestMapping("/login")
+@RequestMapping("/loginceshi")
 public class LoginController {
 
     @RequestMapping(method = RequestMethod.POST, consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
