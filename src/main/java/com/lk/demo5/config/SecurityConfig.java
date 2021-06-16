@@ -25,8 +25,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     @Qualifier("authenticationManager")
     private AuthenticationManager authenticationManager;
-    @Autowired
-    private MobileAuthenticationProvider mobileAuthenticationProvider;
+//    @Autowired
+//    private MobileAuthenticationProvider mobileAuthenticationProvider;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {

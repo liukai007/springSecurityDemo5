@@ -21,6 +21,9 @@ public class MobileAuthenticationProvider implements AuthenticationProvider {
         System.out.println("MobileAuthenticationProvider   " + code);
 
         MobileUser mobileUser = (MobileUser) mobileUserDetailsService.loadUserByUsername(mobileNumber);
+        if (!mobileUser.getPassword().equals(code)) {
+            throw new IllegalStateException("用户code不一致");
+        }
 
         return new MobileAuthenticationToken(null, mobileNumber, code);
     }

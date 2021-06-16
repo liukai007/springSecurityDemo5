@@ -15,11 +15,11 @@ public class MobileUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        if (MobileUser.map.isEmpty() || MobileUser.map.get(s) == null) {
-            return null;
+        if (MobileUser.map.isEmpty() || !MobileUser.map.keySet().contains(s)) {
+            throw new IllegalStateException("用户名不存在");
         }
         String code = MobileUser.map.get(s);
         Collection<? extends GrantedAuthority> authorities = Collections.EMPTY_LIST;
-        return new MobileUser(s, code, authorities );
+        return new MobileUser(s, code, authorities);
     }
 }
