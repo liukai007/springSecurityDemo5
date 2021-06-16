@@ -13,12 +13,14 @@ public class MobileAuthenticationToken extends AbstractAuthenticationToken {
         super(null);
         this.mobileNumber = mobileNumber;
         this.code = code;
+        super.setAuthenticated(false);
     }
 
     public MobileAuthenticationToken(Collection<? extends GrantedAuthority> authorities, String mobileNumber, String code) {
         super(authorities);
         this.mobileNumber = mobileNumber;
         this.code = code;
+        super.setAuthenticated(true);
     }
 
     public MobileAuthenticationToken(Collection<? extends GrantedAuthority> authorities) {
