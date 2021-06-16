@@ -35,7 +35,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.addFilterBefore(mobileAuthenticationProcessingFilter(), AbstractPreAuthenticatedProcessingFilter.class);
         http.authorizeRequests()
                 .antMatchers(HttpMethod.POST,"/login").permitAll()
-                .anyRequest().authenticated();
+                .anyRequest().authenticated()
+                .and().csrf().disable();
 
     }
 

@@ -8,7 +8,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -34,9 +33,7 @@ public class MobileAuthenticationProcessingFilter extends AbstractAuthentication
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse httpServletResponse) throws AuthenticationException, IOException, ServletException {
-        if (!request.getMethod().equals("POST")) {
-            throw new AuthenticationServiceException("Authentication method not supported: " + request.getMethod());
-        } else {
+        if (request.getMethod().equals("POST")) {
             //获取body里面的东西
             String bodyContent = getBodyContent(request);
             Map map = ((Map) (JSON.parse(bodyContent)));
@@ -46,6 +43,8 @@ public class MobileAuthenticationProcessingFilter extends AbstractAuthentication
             // TODO: 2021/6/15 这个有啥作用
             this.setDetails(request, authRequest);
             return this.getAuthenticationManager().authenticate(authRequest);
+        } else {
+            throw new AuthenticationServiceException("Authentication method not supported: " + request.getMethod());
         }
     }
 
